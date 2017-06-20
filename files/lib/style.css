@@ -1,1 +1,76 @@
-body{}
+/*
+Author: @NicolasStr_
+If you have any issue, please consider opening a issue on Github
+*/
+
+@font-face {
+    font-family: Pricedown;
+    src: url('pricedown.ttf');
+}
+body{
+	height:100%;
+	width:100%;
+	margin:0;
+}
+.bg {
+	opacity: 1;
+    background-image: url(img/bg3.jpg);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+	background-size: cover;
+	background-position: center center;
+    z-index: 1;
+}
+.content{
+	height:100%;
+	width:100%;
+	margin:0;
+	position: absolute;
+    z-index: 2;
+}
+.content *{
+	padding: 5px;
+}
+.content h2{
+	font-size: 50px;
+    font-family: Pricedown !important;
+	color: white;
+    text-shadow: black 0 0 10px;
+}
+.content h1{
+	font-size: 100px;
+    font-family: Pricedown !important;
+	color: white;
+    text-shadow: black 0 0 10px;
+}
+.content > .desc > p {
+	font-size: 30px;
+    font-family: Pricedown !important;
+	color: white;
+    text-shadow: black 0 0 10px;
+}
+.progression{
+	position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+.progress-bar{
+	position:absolute;
+    width: 10%;
+    margin: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.20);
+}
+.progress-infos{
+	position:absolute;
+    width: 100%;
+    margin: 0;
+    height: calc( 100% - 15px );
+    color: white;
+    top:15px;
+    font-family: 'Lato', sans-serif;
+}
