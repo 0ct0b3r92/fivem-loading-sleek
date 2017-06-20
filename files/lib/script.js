@@ -26,23 +26,27 @@ $(document).ready(function() {
     }
     textupdate();
     backgroundimageslider();
-
-    /* FIVEM LOADING BAR SCRIPT */
-    var count = 0;
-    var thisCount = 0;
-    const handlers = {
-        performMapLoadFunction(data)
-        {
-            ++thisCount;
-            $( "#progress" ).animate({width: ((thisCount / count) * 100) + '%'}, 5000);
-        },
-        onLogLine(data)
-        {
-            $( "#infos" ).text(data+"...");
-        }
-    };
-    window.addEventListener('message', function(e)
+});
+var count = 0;
+var thisCount = 0;
+const handlers = {
+    initFunctionInvoking(data)
     {
-        (handlers[e.data.eventName] || function() {})(e.data);
-    });
+        document.querySelector('#progress').style.left = '0%';
+        document.querySelector('#progress').style.width = ((data.idx / count) * 100) + '%';
+    },
+    performMapLoadFunction(data)
+    {
+        ++thisCount;
+        document.querySelector('#progress').style.left = '0%';
+        document.querySelector('#progress').style.width = ((thisCount / count) * 100) + '%';
+    },
+    onLogLine(data)
+    {
+        document.querySelector('#infos').innerHTML = data.message + "...";
+    }
+};
+window.addEventListener('message', function(e)
+{
+    (handlers[e.data.eventName] || function() {})(e.data);
 });
