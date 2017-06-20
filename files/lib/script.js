@@ -26,4 +26,23 @@ $(document).ready(function() {
     }
     heyhey();
     yoyo();
+
+    /* FIVEM LOADING BAR SCRIPT */
+    var count = 0;
+    var thisCount = 0;
+    const handlers = {
+        performMapLoadFunction(data)
+        {
+            ++thisCount;
+            $( "#progress" ).animate({width: ((thisCount / count) * 100) + '%'}, 5000);
+        },
+        onLogLine(data)
+        {
+            $( "#infos" ).text(data+"...");
+        }
+    };
+    window.addEventListener('message', function(e)
+    {
+        (handlers[e.data.eventName] || function() {})(e.data);
+    });
 });
