@@ -3,29 +3,29 @@ Author: @NicolasStr_
 If you have any issue, please consider opening a issue on Github
 */
 $(document).ready(function() {
-	$('#welcome').text(welcome);
-	$('#servername').text(servername);
-	document.title = servername;
-    function heyhey()
+    $('#welcome').text(welcome);
+    $('#servername').text(servername);
+    document.title = servername;
+    function textupdate()
     {
-    	var bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+        var bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
         $('.bg').fadeOut('slow', function () {
             $('.bg').css({ 'background-image': 'url('+bg+')' });
             $('.bg').fadeIn('slow');
         });
-    	setTimeout(heyhey,10000);
+        setTimeout(textupdate,10000);
     }
-    function yoyo()
+    function backgroundimageslider()
     {
-    	var text_rdm = texts[Math.floor(Math.random() * texts.length)];
+        var text_rdm = texts[Math.floor(Math.random() * texts.length)];
         $('#text').fadeOut('slow', function () {
             $('#text').text(text_rdm);
             $('#text').fadeIn('slow');
         });
-    	setTimeout(yoyo,15000);
+        setTimeout(backgroundimageslider,15000);
     }
-    heyhey();
-    yoyo();
+    textupdate();
+    backgroundimageslider();
 
     /* FIVEM LOADING BAR SCRIPT */
     var count = 0;
