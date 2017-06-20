@@ -1,2 +1,3 @@
 # fivem-loading-sleek
-[http://i.imgur.com/C3nftu6.jpg]
+
+![screenshot](http://i.imgur.com/C3nftu6.jpg "Screenshot")
