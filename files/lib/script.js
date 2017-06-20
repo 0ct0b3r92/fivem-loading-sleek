@@ -3,8 +3,8 @@ Author: @NicolasStr_
 If you have any issue, please consider opening a issue on Github
 */
 $(document).ready(function() {
-    $('#welcome').text(welcome);
-    $('#servername').text(servername);
+    $('#welcome').text(welcomeText);
+    $('#servername').text(serverName);
     document.title = servername;
     function textUpdate()
     {

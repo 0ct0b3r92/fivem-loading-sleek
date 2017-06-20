@@ -8,5 +8,5 @@ texts = [
 	"Hey you",
 	"Make Planet Great Again"
 ],
-welcome = "Welcome to",
-servername = "MYGTARP";
+welcomeText = "Welcome to",
+serverName = "MYGTARP";
