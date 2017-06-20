@@ -6,7 +6,7 @@ $(document).ready(function() {
     $('#welcome').text(welcome);
     $('#servername').text(servername);
     document.title = servername;
-    function textupdate()
+    function textUpdate()
     {
         var bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
         $('.bg').fadeOut('slow', function () {
@@ -15,7 +15,7 @@ $(document).ready(function() {
         });
         setTimeout(textupdate,10000);
     }
-    function backgroundimageslider()
+    function backgroundImageSlider()
     {
         var text_rdm = texts[Math.floor(Math.random() * texts.length)];
         $('#text').fadeOut('slow', function () {
@@ -24,8 +24,8 @@ $(document).ready(function() {
         });
         setTimeout(backgroundimageslider,15000);
     }
-    textupdate();
-    backgroundimageslider();
+    textUpdate();
+    backgroundImageSlider();
 });
 var count = 0;
 var thisCount = 0;
