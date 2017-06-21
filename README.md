@@ -12,7 +12,7 @@ This Loading Screen is responsive, it automatically fits to the size of the wind
 ## Installation
 - Download the resource by clicking on the download button
 - In your *citmp-server.yml* file, add the resource: 
-` - fivem-gta-loading `
+` - fivem-loading-sleek `
 
 ## Questions
 ### How to change something ?
