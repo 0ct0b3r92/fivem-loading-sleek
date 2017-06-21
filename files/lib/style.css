@@ -31,8 +31,8 @@ body{
 	position: absolute;
     z-index: 2;
 }
-.content *{
-	padding: 5px;
+.content div{
+	padding: 30px;
 }
 .content h2{
 	font-size: 50px;
@@ -47,6 +47,7 @@ body{
     text-shadow: black 0 0 10px;
 }
 .content > .desc > p {
+    margin-top: 50px;
 	font-size: 30px;
     font-family: Pricedown !important;
 	color: white;
