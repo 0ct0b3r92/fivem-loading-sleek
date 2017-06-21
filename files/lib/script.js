@@ -8,15 +8,15 @@ function sleekLoader(){
     this.textAnimationTime = 7000;
     this.volume            = volume;
     this.soundfile         = soundFile;
+    this.youtubeID         = youtubeID;
     this.backgrounds       = backgrounds;
     this.texts             = texts;
     this.welcomeText       = welcomeText;
     this.serverName        = serverName;
-
     this.playSound = function(){
         var src = this.soundfile;
         var vol = this.volume;
-        if (vol && src) {
+        if (vol && src && !this.youtubeID) {
             $("<audio></audio>").attr({
                 'src': src,
                 'volume': vol,
@@ -24,21 +24,29 @@ function sleekLoader(){
             }).appendTo("body");
         }
     }
-
+    this.playVideo = function(){
+        var ytID = this.youtubeID;
+        var src = 'https://www.youtube.com/embed/'+ytID+'?rel=0&vq=hd1080&autoplay=1&controls=0&loop=1&playlist='+ytID+'&showinfo=0&iv_load_policy=3';
+        if (ytID) {
+            $("<iframe></iframe>").attr({
+                'src': src
+            }).appendTo(".bg");
+        }
+    }
     this.loadTexts = function(){
         $('#welcome').text(this.welcomeText);
         $('#servername').text(this.serverName);
         document.title = this.serverName;
     }
-
     this.changeBackground = function(){
-        var bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-        $('.bg').fadeOut('slow', function () {
-            $('.bg').css({ 'background-image': 'url('+bg+')' });
-            $('.bg').fadeIn('slow');
-        });
+        if (!this.youtubeID) { /* WE DONT WANT TO DISPLAY BG IF WE DONT NEED IT */
+            var bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            $('.bg').fadeOut('slow', function () {
+                $('.bg').css({ 'background-image': 'url('+bg+')' });
+                $('.bg').fadeIn('slow');
+            });
+        }
     }
-
     this.changeText = function (isFirst) {
         var randomText = this.texts[Math.floor(Math.random() * this.texts.length)];
         $('#text').fadeOut('slow', function () {
@@ -46,10 +54,10 @@ function sleekLoader(){
             $('#text').fadeIn('slow');
         });
     }
-
     this.init = function () {
         this.loadTexts();
         this.playSound();
+        this.playVideo();
         this.changeBackground();
         this.changeText();
         var _this = this;
@@ -60,7 +68,6 @@ function sleekLoader(){
             _this.changeText();
         }, this.textAnimationTime);
     }
-
 };
 var count = 0;
 var thisCount = 0;
