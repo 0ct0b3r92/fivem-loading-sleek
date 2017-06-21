@@ -1,32 +1,67 @@
 /*
 Author: @NicolasStr_
-If you have any issue, please consider opening a issue on Github
+If you have any issue, please consider opening an issue on Github
+https://github.com/NicolasStr/fivem-loading-sleek/
 */
-$(document).ready(function() {
-    $('#welcome').text(welcomeText);
-    $('#servername').text(serverName);
-    document.title = servername;
-    function textUpdate()
-    {
+function sleekLoader(){
+    this.bgAnimationTime   = 7000;
+    this.textAnimationTime = 7000;
+    this.volume            = volume;
+    this.soundfile         = soundFile;
+    this.backgrounds       = backgrounds;
+    this.texts             = texts;
+    this.welcomeText       = welcomeText;
+    this.serverName        = serverName;
+
+    this.playSound = function(){
+        var src = this.soundfile;
+        var vol = this.volume;
+        if (vol && src) {
+            $("<audio></audio>").attr({
+                'src': src,
+                'volume': vol,
+                'autoplay':'autoplay'
+            }).appendTo("body");
+        }
+    }
+
+    this.loadTexts = function(){
+        $('#welcome').text(this.welcomeText);
+        $('#servername').text(this.serverName);
+        document.title = this.serverName;
+    }
+
+    this.changeBackground = function(){
         var bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
         $('.bg').fadeOut('slow', function () {
             $('.bg').css({ 'background-image': 'url('+bg+')' });
             $('.bg').fadeIn('slow');
         });
-        setTimeout(textupdate,10000);
     }
-    function backgroundImageSlider()
-    {
-        var text_rdm = texts[Math.floor(Math.random() * texts.length)];
+
+    this.changeText = function (isFirst) {
+        var randomText = this.texts[Math.floor(Math.random() * this.texts.length)];
         $('#text').fadeOut('slow', function () {
-            $('#text').text(text_rdm);
+            $('#text').text(randomText);
             $('#text').fadeIn('slow');
         });
-        setTimeout(backgroundimageslider,15000);
     }
-    textUpdate();
-    backgroundImageSlider();
-});
+
+    this.init = function () {
+        this.loadTexts();
+        this.playSound();
+        this.changeBackground();
+        this.changeText();
+        var _this = this;
+        window.setInterval(function () {
+            _this.changeBackground();
+        }, this.bgAnimationTime);
+        window.setInterval(function () {
+            _this.changeText();
+        }, this.textAnimationTime);
+    }
+
+};
 var count = 0;
 var thisCount = 0;
 const handlers = {
