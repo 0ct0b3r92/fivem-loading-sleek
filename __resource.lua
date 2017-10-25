@@ -11,7 +11,8 @@ files {
     'files/img/bg3.jpg',
     'files/lib/pricedown.ttf',
     'files/lib/script.js',
-    'files/lib/style.css'
+    'files/lib/style.css',
+    'files/sound.ogg'
 }
 
 loadscreen 'files/index.html'
